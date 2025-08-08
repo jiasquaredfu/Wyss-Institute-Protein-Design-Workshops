@@ -2,5 +2,4 @@
 Workshop series at the Wyss Institute covering the basics computational protein design, current workflows and de novo design strategies. 
 
 
-hey this is aina
-greetings this is (jia)^2
+to get updated version of docs, pull files from github(app) and open them in vscode. 
