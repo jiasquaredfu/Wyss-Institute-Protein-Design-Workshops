@@ -1,5 +1,10 @@
 # Wyss Institute Protein Design Workshops
-Welcome to the Wyss Institute protein design workshops covering the basics computational protein design, current workflows and de novo design strategies. 
+Welcome to the Wyss Institute protein design workshops covering the basics computational protein design, current workflows and de novo design strategies. This is geared towards experimentalists who work in protein engineering who'd like to learn about the newest machine learning driven protein design tools. No prior experience needed!
+
+What take away from this workshop:
+1. Understanding of cutting-edge machine learning models for protein design
+2. Tools for the modern protein design pipeline downloaded
+3. A *de novo* mini-binder protein you designed! 
 
 # Workshop hardware requirements 
 Before we can start, these following items are required for running software for this workshop!
