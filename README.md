@@ -1,39 +1,53 @@
 # Wyss-Institute-Protein-Design-Workshops
 Workshop series at the Wyss Institute covering the basics computational protein design, current workflows and de novo design strategies. 
 
-
-
+## Workshop hardware requirements 
+Before we can start, these following items are required for running software for this workshop!
+1. Laptop or PC
+2. ~70GB of available storage
+3. Terminal authorization 
 
 # Linux Command Line Cheat Sheet
-To navigate in terminal on either mac or windows, these are some key Linux commands which will be used throughout this workshop and are just helpful to know:
+Linux is used to navigate and download the necessary software through terminal on both Mac and Windows for this workshop. These are some key  commands which will be used throughout this workshop and for computational work in general:
 
 *insert table*
 
-
-
-Here is a comprehensive cheat sheet for reference! https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/
-And here is a game that helps you build up your Linux muscle memory! https://gitlab.com/slackermedia/bashcrawl
+[Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive cheat sheet for reference 
+And [here](https://gitlab.com/slackermedia/bashcrawl) is a game that helps you build up your Linux muscle memory! 
 
 ## Running Locally
 
-# Install dependencies
-1. install anaconda distributor
-https://www.anaconda.com/download
+Before downloading the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold), a few packages need to be downloaded first:
 
+1. Install [anaconda distributor](https://www.anaconda.com/download)
+- follow the conda instructions for your operating system 
 
 # On Mac
-1. install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-2. install wget
-brew install wget
+1. Install homebrew
+- Open Terminal
+- Navigate to folder where you want to store the software
+'''
+cd /Users/jiasquared/Desktop/Wyss
+'''
+- Make and enter new directory 
+'''
+  mkdir protein_design_software && cd protein_design_software
+'''
+- Type ''' /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" '''
+2. Install wget
+- Type '''brew install wget'''
 
 # On Windows
-1. install wget via gnu https://gnuwin32.sourceforge.net/packages/wget.htm
+1. Install wget via [GNU](https://gnuwin32.sourceforge.net/packages/wget.htm)
+- Make and enter new directory 
+'''
+  mkdir protein_design_software && cd protein_design_software
+'''
 
-2. 
 
-# Install RFDiffusion
-1. clone repo
+
+## Install RFDiffusion
+1. Clone repo
 git clone https://github.com/RosettaCommons/RFdiffusion.git
 2. install model weights
 
@@ -72,6 +86,14 @@ dependencies:
 press esc and type :wq to save and quit the file 
 conda activate SE3nv, command line should look like this when you are in the SE3nv environment
 <img width="319" height="17" alt="Screenshot 2025-09-02 at 11 30 04 AM" src="https://github.com/user-attachments/assets/fc1f19fa-3a16-4b2c-89ae-8ceb8aa56abc" />
+
+
+# Install ProteinMPNN
+git clone https://github.com/dauparas/ProteinMPNN.git
+
+# Install Local Colabfold
+brew install wget cmake
+git clone https://github.com/YoshitakaMo/localcolabfold.git
 
 
 
