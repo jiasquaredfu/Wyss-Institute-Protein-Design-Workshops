@@ -16,23 +16,24 @@ These following items are required for running software for this workshop!
 ## Linux Command Line Cheat Sheet
 Linux is used to navigate and download the necessary software through terminal on both Mac and Windows for this workshop. Basic familiarity with these key commands will be very helpful for this workshop and for computational work in general (we will use them throughout the workshop, no need to memorize them!):
 
- | <b> Linux/VIM Command </b> | <b> Function </b> |
- | ls | show contents of current directory |
- | cd <folder_name> | move into folder |
- | cd .. | move out of folder |
- | pwd | show current directory file path |
- | mv <file_name> <new_location> | move file to new location |
- | mvdir <folder_name> <new_location> | move folder to new location |
- | rm <file_name> | remove file |
- | rmdir <folder_name> | remove folder |
- | vi <file_name> | open VIM editor (press "i" key to enter editing mode) |
- | :wq | save and quit file |
- | :q | quit file without saving |
+| Linux/VIM Command        | Function                                                |
+|--------------------------|---------------------------------------------------------|
+| `ls`                     | show contents of current directory                      |
+| `cd <folder_name>`       | move into folder                                        |
+| `cd ..`                  | move out of folder                                      |
+| `pwd`                    | show current directory file path                        |
+| `mv <file_name> <new_location>` | move file to new location                           |
+| `mvdir <folder_name> <new_location>` | move folder to new location                     |
+| `rm <file_name>`         | remove file                                             |
+| `rmdir <folder_name>`    | remove folder                                           |
+| `vi <file_name>`         | open VIM editor (press "i" key to enter editing mode)  |
+| `:wq`                    | save and quit file                                      |
+| `:q`                     | quit file without saving                                |
  
 
 <b>Helpful Resources:</b><br>
-[Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive cheat sheet for reference <br>
-[Here](https://gitlab.com/slackermedia/bashcrawl) is a game that helps you build up your Linux muscle memory! <br>
+- [Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive cheat sheet for reference <br>
+- [Here](https://gitlab.com/slackermedia/bashcrawl) is a game that helps you build up your Linux muscle memory! <br>
 
 
 # Workshop Day 1 - Downloading Software (how fun!)
