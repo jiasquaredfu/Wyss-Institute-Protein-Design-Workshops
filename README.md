@@ -1,7 +1,7 @@
 # Wyss-Institute-Protein-Design-Workshops
 Workshop series at the Wyss Institute covering the basics computational protein design, current workflows and de novo design strategies. 
 
-## Workshop hardware requirements 
+# Workshop hardware requirements 
 Before we can start, these following items are required for running software for this workshop!
 1. Laptop or PC
 2. ~70GB of available storage
@@ -15,38 +15,33 @@ Linux is used to navigate and download the necessary software through terminal o
 [Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive cheat sheet for reference 
 And [here](https://gitlab.com/slackermedia/bashcrawl) is a game that helps you build up your Linux muscle memory! 
 
-## Running Locally
+# Install Dependencies
 
 Before downloading the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold), a few packages need to be downloaded first:
 
-1. Install [anaconda distributor](https://www.anaconda.com/download)
-- follow the conda instructions for your operating system 
 
-# On Mac
-1. Install homebrew
+## On Mac
+1. Install [anaconda distributor](https://www.anaconda.com/download)
+- follow the conda instructions for Mac
+2. Install homebrew
 - Open Terminal
 - Navigate to folder where you want to store the software
-'''
-cd /Users/jiasquared/Desktop/Wyss
-'''
-- Make and enter new directory 
-'''
-  mkdir protein_design_software && cd protein_design_software
-'''
-- Type ''' /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" '''
+  <pre> ``` cd /Users/jiasquared/Desktop/Wyss ``` </pre>
+- Make and enter new directory
+  <pre> ```mkdir protein_design_software && cd protein_design_software ``` </pre>
+- Type   <pre> ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ``` </pre> and enter
 2. Install wget
-- Type '''brew install wget'''
+- Type <pre> ```brew install wget``` </pre> and enter
 
-# On Windows
-1. Install wget via [GNU](https://gnuwin32.sourceforge.net/packages/wget.htm)
+## On Windows
+1. Install [anaconda distributor](https://www.anaconda.com/download)
+- follow the conda instructions for Windows
+2. Install wget via [GNU](https://gnuwin32.sourceforge.net/packages/wget.htm)
 - Make and enter new directory 
-'''
-  mkdir protein_design_software && cd protein_design_software
-'''
+ <pre> ```mkdir protein_design_software && cd protein_design_software ``` </pre>
 
 
-
-## Install RFDiffusion
+# Install RFDiffusion
 1. Clone repo
 git clone https://github.com/RosettaCommons/RFdiffusion.git
 2. install model weights
