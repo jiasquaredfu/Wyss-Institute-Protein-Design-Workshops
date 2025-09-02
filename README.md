@@ -1,5 +1,5 @@
-# Wyss-Institute-Protein-Design-Workshops
-Workshop series at the Wyss Institute covering the basics computational protein design, current workflows and de novo design strategies. 
+# Wyss Institute Protein Design Workshops
+Welcome to the Wyss Institute protein design workshops covering the basics computational protein design, current workflows and de novo design strategies. 
 
 # Workshop hardware requirements 
 Before we can start, these following items are required for running software for this workshop!
