@@ -1,5 +1,5 @@
 # Wyss Computational Protein Design Workshops
-Welcome to the Wyss Institute protein design workshops covering the basics computational protein design, current workflows and de novo design strategies. This is geared towards experimentalists who work in protein engineering who'd like to learn about the newest machine learning driven protein design tools. No prior experience needed!
+Welcome to the Wyss Institute protein design workshops! We are covering the basics computational protein design, current workflows and de novo design strategies. This is geared towards experimentalists who work in protein engineering who'd like to learn about the newest machine learning driven protein design tools. No prior experience needed!
 
 <b> What to take away from this workshop: </b>
 1. Understanding of cutting-edge machine learning models for protein design
@@ -46,10 +46,10 @@ Linux is used to navigate and download the necessary software through terminal o
 - Open Terminal 
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
 2. Install homebrew
-- Navigate to folder where you want to store the software
+- Navigate to directory where you want to work
   <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
-- Make and enter new directory
-  <pre> mkdir protein_design_software && cd protein_design_software </pre>
+- Make a new folder where you want to keep software
+-   <pre> mkdir protein_design_software && cd protein_design_software </pre>
 - Type  <pre> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </pre> and enter
 - Confirm homebrew has been properly installed by typing <pre> brew --version </pre> and enter
 2. Install wget
@@ -64,8 +64,9 @@ Linux is used to navigate and download the necessary software through terminal o
 
 # Install Machine Learning Models 
 ## Install RFDiffusion
-1. Ensuring you are in the protein_design_software folder, clone repo
-<pre> git clone https://github.com/RosettaCommons/RFdiffusion.git <pre>
+1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+2. Clone RFdiffusion git repo
+<pre> git clone https://github.com/RosettaCommons/RFdiffusion.git </pre>
 2. Install model weights (this step will take ~5 minutes)
 <pre> cd RFdiffusion </pre>
 <pre> mkdir models && cd models </pre>
@@ -85,7 +86,7 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 <pre> conda env create -f env/SE3nv.yml </pre>
 <pre> rm env/SE3nv.yml </pre>
 <pre> vi env/SE3nv.yml  </pre>
-- A new file will open up. Press the i key and *INSERT* should appear at the bottom of the screen <br>
+- A new file will open up. Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
 - Copy the following code into the file:
 <pre>
 name: SE3nv
@@ -104,6 +105,7 @@ dependencies:
       - dgl   
 </pre>
 - Press esc and type <pre> :wq </pre> to save and quit the file
+<pre> conda activate SE3nv </pre>
 - The command line should look like this when you are in the SE3nv environment
 <img width="319" height="17" alt="Screenshot 2025-09-02 at 11 30 04 AM" src="https://github.com/user-attachments/assets/fc1f19fa-3a16-4b2c-89ae-8ceb8aa56abc" />
 <pre>cd env/SE3Transformer</pre>
@@ -125,34 +127,34 @@ dependencies:
 <pre> pip install -e . </pre>
 
 ## Install ProteinMPNN
+1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+2. Clone ProteinMPNN git repo
 <pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
 
 ## Install Local Colabfold
 This is a local, open source version of AlphaFold which does not require downloading 3 Tb of protein databases to your computer!
+### On Mac
+1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+2. Install cmake
 <pre> brew install cmake </pre>
+3. Clone Colabfold git repo
 <pre> git clone https://github.com/YoshitakaMo/localcolabfold.git </pre>
 
+### On Windows
+1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+2. Clone Colabfold git repo
+<pre> git clone https://github.com/YoshitakaMo/localcolabfold.git </pre>
 
 # Workshop Day 2: Designing your own *de novo* protein!
 
-
 ## [Theory Presentation](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)
-The first component is a short lecture on the theory behind designing proteins from scratch.
-
-
-## [Interactive Notebook](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
-Here is a comprehensive demo notebook from Ovchinikov lab at MIT which allows users to run the full protein design pipeline discussed in the lecture. 
-
-## Running in Notebooks
-### [RFDiffusion](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
-
+This is a short presentation on the theory behind designing proteins from scratch.
 
 ## Additional Resources
-### [Alphafold2](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb)
-### [Alphafold3](https://alphafoldserver.com)
-### Colabfold
-ColabFold is an open source collaboration also from Ovchinikov lab which is an open source alternative to alphafold. The repo is a great resource which includes links to multiple [notebooks](https://github.com/sokrypton/ColabFold)
-
-to get updated version of docs, pull files from github(app) and open them in vscode. 
-hello this is a test.
+These notebooks are hosted on the Google Colab server which allows you to run protein design software on the cloud instead of locally. 
+- [Interactive Notebook](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
+- [RFDiffusion](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
+- [Alphafold2](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb)
+- [Alphafold3](https://alphafoldserver.com)
+- [Colabfold](https://github.com/sokrypton/ColabFold)
 
