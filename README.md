@@ -41,7 +41,10 @@ Linux is used to navigate and download the necessary software through terminal o
 <b> A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold): </b>
 
 ## On Mac
-1. Install [anaconda distributor](https://www.anaconda.com/download)
+1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
+- Follow download instructions for Mac (desktop app not necessary)
+- Confirm git has been properly installed by typing <pre> git --version </pre> and enter
+3. Install [anaconda distributor](https://www.anaconda.com/download)
 - Follow the conda instructions for Mac
 - Open Terminal 
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
@@ -52,15 +55,22 @@ Linux is used to navigate and download the necessary software through terminal o
 -   <pre> mkdir protein_design_software && cd protein_design_software </pre>
 - Type  <pre> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </pre> and enter
 - Confirm homebrew has been properly installed by typing <pre> brew --version </pre> and enter
-2. Install wget
+3. Install wget
 - Type <pre> brew install wget </pre> and enter
 
 ## On Windows
-1. Install [anaconda distributor](https://www.anaconda.com/download)
-- follow the conda instructions for Windows
+1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
+- Follow download instructions for Windows (desktop app not necessary)
+- Confirm git has been properly installed by typing <pre> git --version </pre> and enter
+2. Install [anaconda distributor](https://www.anaconda.com/download)
+- Follow the conda instructions for Windows
+- Open cmd or powershell
+- Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
+- Navigate to directory where you want to work
+  <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
+- Make a new folder where you want to keep software
+-   <pre> mkdir protein_design_software && cd protein_design_software </pre>
 2. Install wget via [GNU](https://gnuwin32.sourceforge.net/packages/wget.htm)
-- Make and enter new directory 
- <pre> mkdir protein_design_software && cd protein_design_software </pre>
 
 # Install Machine Learning Models 
 ## Install RFDiffusion
