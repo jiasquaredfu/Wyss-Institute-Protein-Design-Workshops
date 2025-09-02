@@ -1,7 +1,7 @@
 # Wyss Computational Protein Design Workshops
 Welcome to the Wyss Institute protein design workshops covering the basics computational protein design, current workflows and de novo design strategies. This is geared towards experimentalists who work in protein engineering who'd like to learn about the newest machine learning driven protein design tools. No prior experience needed!
 
-<b>What to take away from this workshop: </b>
+<b> What to take away from this workshop: </b>
 1. Understanding of cutting-edge machine learning models for protein design
 2. Tools for the modern protein design pipeline downloaded on your computer
 3. A *de novo* mini-binder protein you designed! 
@@ -18,14 +18,13 @@ Linux is used to navigate and download the necessary software through terminal o
 
 *insert table*
 
-<b>Helpful Resources:</br>
+<b>Helpful Resources:</b><br>
 [Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive cheat sheet for reference <br>
 [Here](https://gitlab.com/slackermedia/bashcrawl) is a game that helps you build up your Linux muscle memory! <br>
 
-# Install Dependencies
 
-Before downloading the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold), a few packages need to be downloaded first:
-
+# Workshop Walkthrough: Install Dependencies
+<b> A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold): </b>
 
 ## On Mac
 1. Install [anaconda distributor](https://www.anaconda.com/download)
@@ -51,7 +50,7 @@ Before downloading the 3 machine learning models which comprise the protein desi
 
 
 # Install RFDiffusion
-1. Open Terminal and clone repo
+1. Ensuring you are in the protein_design_software folder, clone repo
 <pre> git clone https://github.com/RosettaCommons/RFdiffusion.git <pre>
 2. Install model weights (this step will take ~5 minutes)
 <pre> cd RFdiffusion </pre>
@@ -72,8 +71,8 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 <pre> conda env create -f env/SE3nv.yml </pre>
 <pre> rm env/SE3nv.yml </pre>
 <pre> vi env/SE3nv.yml  </pre>
-A new file will open up. Press the i key and *INSERT* should appear at the bottom of the screen <br>
-Copy the following text into the file:
+- A new file will open up. Press the i key and *INSERT* should appear at the bottom of the screen <br>
+- Copy the following code into the file:
 <pre>
 name: SE3nv
 channels:
@@ -90,9 +89,9 @@ dependencies:
   - pip:
       - dgl   
 </pre>
-Press esc and type <pre> :wq </pre> to save and quit the file 
+- Press esc and type <pre> :wq </pre> to save and quit the file 
 <pre> conda activate SE3nv </pre>
-The command line should look like this when you are in the SE3nv environment
+- The command line should look like this when you are in the SE3nv environment
 <img width="319" height="17" alt="Screenshot 2025-09-02 at 11 30 04 AM" src="https://github.com/user-attachments/assets/fc1f19fa-3a16-4b2c-89ae-8ceb8aa56abc" />
 
 
