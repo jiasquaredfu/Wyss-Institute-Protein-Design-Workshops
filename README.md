@@ -92,37 +92,24 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 3. Install NVIDIA SE3nv transformer
 *Note, NVIDIA CUDA GPUS are not supported for Macs. The following instructions are to adjust RFDiffusion to be compatible with MacOS, which means running solely on CPU, which is slower than with GPU.*
 ### On Mac
-- Ensure you are in the RFdiffusion directory <pre> cd RFdiffusion </pre>
-<pre> conda env create -f env/SE3nv.yml </pre>
-<pre> rm env/SE3nv.yml </pre>
-<pre> vi env/SE3nv.yml  </pre>
-- A new file will open up. Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
-- Copy the following code into the file:
-<pre>
-name: SE3nv
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - python=3.9
-  - pip
-  - numpy
-  - scipy
-  - pytorch
-  - torchvision
-  - torchaudio
-  - pip:
-      - dgl   
+follow rosetta beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc)
+
+<br>
+vi /Users/jiasquared/Desktop/Wyss/protein_design_software/RFdiffusion/rfdiffusion/util_module.py
+- Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
+- Copy paste the following into the top of the file before the other imports: <br>
+<pre> #patch for graphbolt thing
+import sys
+import types
+sys.modules['dgl.graphbolt'] = types.ModuleType('graphbolt')
+try:
+    from dgl import graphbolt as gb
+except ImportError:
+    gb = None
 </pre>
+
 - Press esc and type <pre> :wq </pre> to save and quit the file
-<pre> conda activate SE3nv </pre>
-- The command line should look like this when you are in the SE3nv environment
-<img width="319" height="17" alt="Screenshot 2025-09-02 at 11 30 04 AM" src="https://github.com/user-attachments/assets/fc1f19fa-3a16-4b2c-89ae-8ceb8aa56abc" />
-<pre>cd env/SE3Transformer</pre>
-<pre>pip install --no-cache-dir -r requirements.txt</pre>
-<pre>python setup.py install</pre>
-<pre> cd ../..</pre>
-<pre> pip install -e . </pre>
+
 
 ### On Windows
 - Ensure you are in the RFdiffusion directory <pre> cd RFdiffusion </pre>
@@ -137,6 +124,17 @@ dependencies:
 <pre> pip install -e . </pre>
 
 ## Install ProteinMPNN
+### On Mac
+conda create --name mlfold - this creates conda environment called mlfold
+source activate mlfold - this activate environment
+conda install pytorch torchvision torchaudio cpuonly -c pytorch # For CPU-only
+
+### On Windows
+conda create --name mlfold - this creates conda environment called mlfold
+source activate mlfold - this activate environment
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch - install pytorch following steps from https://pytorch.org/
+
+
 1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
 2. Clone ProteinMPNN git repo
 <pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
