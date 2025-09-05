@@ -37,26 +37,32 @@ Linux is used to navigate and download the necessary software through terminal o
 
 
 # Workshop Day 1 - Downloading Software (how fun!)
+
+## [Day 1 Slides](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)
+This is a short presentation on and brief theory and the pipeline structure for designing proteins from scratch.
+
+
 # Installing Dependencies
 <b> A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold): </b>
 
 ## On Mac
 1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
-- Follow download instructions for Mac (desktop app not necessary)
-- Confirm git has been properly installed by typing <pre> git --version </pre> and enter
-3. Install [anaconda distributor](https://www.anaconda.com/download)
+- Follow download instructions for Mac (desktop app not necessary but helpful for beginners)
+- Confirm git has been properly installed by typing <pre> git --version </pre> and enter (should be 2.51.0)
+2. Install [anaconda distributor](https://www.anaconda.com/download)
 - Follow the conda instructions for Mac
 - Open Terminal 
-- Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
-2. Install homebrew
+- Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter (should be 25.7.0)
+3. Install homebrew
 - Navigate to directory where you want to work
-  <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
-- Make a new folder where you want to keep software
--   <pre> mkdir protein_design_software && cd protein_design_software </pre>
 - Type  <pre> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </pre> and enter
 - Confirm homebrew has been properly installed by typing <pre> brew --version </pre> and enter
-3. Install wget
-- Type <pre> brew install wget </pre> and enter
+4. Install wget
+- Type <pre> brew install wget </pre> and enter (should be 4.6.3)
+5. Install curl
+- Type <pre> brew install curl </pre> and enter (should be 8.15.0)
+6. Install cmake
+<pre> brew install cmake </pre> and enter (should be 4.1.1)
 
 ## On Windows
 1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
@@ -73,11 +79,15 @@ Linux is used to navigate and download the necessary software through terminal o
 2. Install wget via [GNU](https://gnuwin32.sourceforge.net/packages/wget.htm)
 
 # Install Machine Learning Models 
+Make a new folder where you want to keep software
+- this can be done manually or through the following commands quickly
+<pre> cd /Users/jiasquared/Desktop/Wyss </pre>
+<pre> mkdir protein_design_software && cd protein_design_software </pre>
 ## Install RFDiffusion
-1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+1. Ensure you are in the directory you want <pre> cd protein_design_software </pre> 
 2. Clone RFdiffusion git repo
 <pre> git clone https://github.com/RosettaCommons/RFdiffusion.git </pre>
-2. Install model weights (this step will take ~5 minutes)
+2. Install model weights (this step will take ~5 minutes, type the following code blocks into Terminal and enter one at a time)
 <pre> cd RFdiffusion </pre>
 <pre> mkdir models && cd models </pre>
 <pre>
@@ -90,15 +100,14 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/5532d2e1f3a4738decd58b19d633b3c3/Ac
 wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Base_epoch8_ckpt.pt
 </pre>
 3. Install NVIDIA SE3nv transformer
-*Note, NVIDIA CUDA GPUS are not supported for Macs. The following instructions are to adjust RFDiffusion to be compatible with MacOS, which means running solely on CPU, which is slower than with GPU.*
+*Note, NVIDIA CUDA GPUs which all 3 ML models utilize are not supported for Macs. The following instructions are to adjust RFDiffusion to be compatible with MacOS, which means running solely on CPU, which means all predictions will be 5-10 times slower than with GPU.*
 ### On Mac
-follow rosetta beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc)
-
-<br>
-vi /Users/jiasquared/Desktop/Wyss/protein_design_software/RFdiffusion/rfdiffusion/util_module.py
+- Follow the "ARM-Based (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) <br>
+- Open the util_module.py file in your RFdiffusion installation
+<pre> vi /Users/jiasquared/Desktop/Wyss/protein_design_software/RFdiffusion/rfdiffusion/util_module.py </pre>
 - Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
 - Copy paste the following into the top of the file before the other imports: <br>
-<pre> #patch for graphbolt thing
+<pre> #patch for graphbolt override
 import sys
 import types
 sys.modules['dgl.graphbolt'] = types.ModuleType('graphbolt')
@@ -107,7 +116,6 @@ try:
 except ImportError:
     gb = None
 </pre>
-
 - Press esc and type <pre> :wq </pre> to save and quit the file
 
 
@@ -125,38 +133,56 @@ except ImportError:
 
 ## Install ProteinMPNN
 ### On Mac
-conda create --name mlfold - this creates conda environment called mlfold
-source activate mlfold - this activate environment
-conda install pytorch torchvision torchaudio cpuonly -c pytorch # For CPU-only
+1. Create conda environment called mlfold
+<pre> conda create --name mlfold </pre>
+<pre> source activate mlfold </pre>
+2. Add CPU only pytorch ML library 
+<pre>conda install pytorch torchvision torchaudio cpuonly -c pytorch </pre>
 
 ### On Windows
-conda create --name mlfold - this creates conda environment called mlfold
-source activate mlfold - this activate environment
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch - install pytorch following steps from https://pytorch.org/
+1. Create conda environment called mlfold
+<pre> conda create --name mlfold </pre>
+<pre> source activate mlfold </pre>
+2. Add CPU only pytorch ML library 
+<pre>conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch </pre>
 
-
-1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
-2. Clone ProteinMPNN git repo
+3. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+4. Clone ProteinMPNN git repo
 <pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
 
 ## Install Local Colabfold
 This is a local, open source version of AlphaFold which does not require downloading 3 Tb of protein databases to your computer!
 ### On Mac
 1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
-2. Install cmake
-<pre> brew install cmake </pre>
-3. Clone Colabfold git repo
+2. Clone Colabfold git repo
 <pre> git clone https://github.com/YoshitakaMo/localcolabfold.git </pre>
+3. Follow documentation instructions for either Intel or Apple Silicon M chip [here](https://github.com/YoshitakaMo/localcolabfold)
 
 ### On Windows
 1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
 2. Clone Colabfold git repo
 <pre> git clone https://github.com/YoshitakaMo/localcolabfold.git </pre>
+3. Follow documentation instructions for Linux [here](https://github.com/YoshitakaMo/localcolabfold)
+
+
+## Install PyMol
+This is a software for visualizing and analyzing the protein you designed. 
+
+1. Register for a PyMol educational license with your Wyss/MIT email [here](https://pymol.org/edu/)
+2. Verify your email and follow installation instructions
+3. Disregard warning that license not found and will expire in 30 days.. its ok
+
+
+ ### Congratulations!
+You now have your very own local protein design pipeline installed and ready to rumble. See ya tomorrow for the fun stuff :)
 
 # Workshop Day 2: Designing your own *de novo* protein!
+*img of the pipeline*
 
-## [Theory Presentation](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)
-This is a short presentation on the theory behind designing proteins from scratch.
+Now that we did all the hard work setting up the protein design infrastructure, let's apply it!
+
+## [Day 2 Slides](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)
+This is a short presentation on and brief theory and the pipeline structure for designing proteins from scratch.
 
 ## Additional Resources
 These notebooks are hosted on the Google Colab server which allows you to run protein design software on the cloud instead of locally. 
