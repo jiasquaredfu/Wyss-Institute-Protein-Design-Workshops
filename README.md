@@ -37,10 +37,7 @@ Linux is used to navigate and download the necessary software through terminal o
 
 
 # Workshop Day 1 - Downloading Software (how fun!)
-
-## [Day 1 Slides](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)
-This is a short presentation on and brief theory and the pipeline structure for designing proteins from scratch.
-
+Check out these primer slides on the theory and pipeline structure for designing proteins from scratch [here](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)).
 
 # Installing Dependencies
 <b> A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold): </b>
@@ -120,29 +117,31 @@ except ImportError:
 
 
 ### On Windows
-- Ensure you are in the RFdiffusion directory <pre> cd RFdiffusion </pre>
+- Create SE3nv conda environment
 <pre> conda env create -f env/SE3nv.yml </pre>
+- Activate conda environment
 <pre> conda activate SE3nv </pre>
-- The command line should look like this when you are in the SE3nv environment
-<img width="319" height="17" alt="Screenshot 2025-09-02 at 11 30 04 AM" src="https://github.com/user-attachments/assets/fc1f19fa-3a16-4b2c-89ae-8ceb8aa56abc" />
-<pre>cd env/SE3Transformer</pre>
-<pre>pip install --no-cache-dir -r requirements.txt</pre>
-<pre>python setup.py install</pre>
-<pre> cd ../..</pre>
-<pre> pip install -e . </pre>
+<pre>cd env/SE3Transformer </pre>
+<pre> pip install --no-cache-dir -r requirements.txt </pre>
+<pre> python setup.py install </pre>
+<pre> cd ../.. # change into the root directory of the repository </pre>
+<pre> pip install -e . # install the rfdiffusion module from the root of the repository </pre>
+
+4. *Optional* Rename conda env to rfdiffusion or something you'd like 
+<pre> conda rename -n SE3nv rfdiff </pre>
 
 ## Install ProteinMPNN
 ### On Mac
-1. Create conda environment called mlfold
-<pre> conda create --name mlfold </pre>
-<pre> source activate mlfold </pre>
+1. Create conda environment called pmpnn
+<pre> conda create --name pmpnn </pre>
+<pre> source activate pmpnn </pre>
 2. Add CPU only pytorch ML library 
 <pre>conda install pytorch torchvision torchaudio cpuonly -c pytorch </pre>
 
 ### On Windows
-1. Create conda environment called mlfold
-<pre> conda create --name mlfold </pre>
-<pre> source activate mlfold </pre>
+1. Create conda environment called pmpnn
+<pre> conda create --name pmpnn </pre>
+<pre> source activate pmpnn </pre>
 2. Add CPU only pytorch ML library 
 <pre>conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch </pre>
 
@@ -166,7 +165,7 @@ This is a local, open source version of AlphaFold which does not require downloa
 
 
 ## Install PyMol
-This is a software for visualizing and analyzing the protein you designed. 
+This is a software for visualizing and analyzing the protein you designed. <br>
 
 1. Register for a PyMol educational license with your Wyss/MIT email [here](https://pymol.org/edu/)
 2. Verify your email and follow installation instructions
@@ -179,10 +178,10 @@ You now have your very own local protein design pipeline installed and ready to 
 # Workshop Day 2: Designing your own *de novo* protein!
 *img of the pipeline*
 
-Now that we did all the hard work setting up the protein design infrastructure, let's apply it!
+Now that we did all the hard work setting up the protein design infrastructure, let's apply it! <br>
 
-## [Day 2 Slides](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)
-This is a short presentation on and brief theory and the pipeline structure for designing proteins from scratch.
+Check out these slides on best practices and target applications protein design can tackle [here](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing).
+
 
 ## Additional Resources
 These notebooks are hosted on the Google Colab server which allows you to run protein design software on the cloud instead of locally. 
