@@ -37,10 +37,10 @@ Linux is used to navigate and download the necessary software through terminal o
 
 
 # Workshop Day 1 - Downloading Software (how fun!)
-Check out these primer slides on the theory and pipeline structure for designing proteins from scratch [here](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing)).
+Check out these primer slides on the theory and pipeline structure for designing proteins from scratch [here](https://hu-my.sharepoint.com/:p:/g/personal/dawningjiaxi_fu_wyss_harvard_edu/EVwylZ5jwstJlKK3unATEh4BOkJ3t_kOPiGjVQT0rVE__A?e=bCCi2G).
 
 # Installing Dependencies
-<b> A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold): </b>
+A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold, PyMol).
 
 ## On Mac
 1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
@@ -69,11 +69,6 @@ Check out these primer slides on the theory and pipeline structure for designing
 - Follow the conda instructions for Windows
 - Open cmd or powershell
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
-- Navigate to directory where you want to work
-  <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
-- Make a new folder where you want to keep software
--   <pre> mkdir protein_design_software && cd protein_design_software </pre>
-2. Install wget via [GNU](https://gnuwin32.sourceforge.net/packages/wget.htm)
 
 # Install Machine Learning Models 
 Make a new folder where you want to keep software
@@ -137,6 +132,9 @@ except ImportError:
 <pre> source activate pmpnn </pre>
 2. Add CPU only pytorch ML library 
 <pre>conda install pytorch torchvision torchaudio cpuonly -c pytorch </pre>
+3. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
+4. Clone ProteinMPNN git repo
+<pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
 
 ### On Windows
 1. Create conda environment called pmpnn
@@ -144,7 +142,6 @@ except ImportError:
 <pre> source activate pmpnn </pre>
 2. Add CPU only pytorch ML library 
 <pre>conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch </pre>
-
 3. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
 4. Clone ProteinMPNN git repo
 <pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
@@ -169,18 +166,29 @@ This is a software for visualizing and analyzing the protein you designed. <br>
 
 1. Register for a PyMol educational license with your Wyss/MIT email [here](https://pymol.org/edu/)
 2. Verify your email and follow installation instructions
-3. Disregard warning that license not found and will expire in 30 days.. its ok
-
+3. Disregard warning that license not found and will expire in 30 days... its ok
 
  ### Congratulations!
-You now have your very own local protein design pipeline installed and ready to rumble. See ya tomorrow for the fun stuff :)
+You now have your very own local protein design pipeline installed and ready to rumble. Please think about a mini-binder (<65 aa long) target (preferably also <= 65aa for Mac people so you don't have to wait for 1 hr to generate an output!) you would like to design for. See ya tomorrow for the fun stuff :)
 
 # Workshop Day 2: Designing your own *de novo* protein!
-*img of the pipeline*
+Check out these slides on best practices and target applications protein design can tackle [here](https://hu-my.sharepoint.com/:p:/g/personal/dawningjiaxi_fu_wyss_harvard_edu/EVwylZ5jwstJlKK3unATEh4BOkJ3t_kOPiGjVQT0rVE__A?e=bCCi2G).
+
+<img width="844" height="559" alt="Screenshot 2025-09-05 at 11 26 31 AM" src="https://github.com/user-attachments/assets/7cdafdd3-ae5d-4a92-89c7-0b2677259545" />
 
 Now that we did all the hard work setting up the protein design infrastructure, let's apply it! <br>
 
-Check out these slides on best practices and target applications protein design can tackle [here](https://docs.google.com/presentation/d/1kaDj9Jek2pOlp9u5BuWBrlPiCu8cP5Phw2dSMDV3gFA/edit?usp=sharing).
+# Backbone design
+*If you don't have a binding target, just use the one in the example scripts built into RFdiffusion*
+- Add your target structure .pdb file into a folder called input_pdbs
+- Make a copy of the binder example shell script in examples
+<pre> cp ./protein_design_software/RFdiffusion/examples/design_ppi.sh workshop_binder.sh </pre>
+- Edit the contig information to fit your case (residue range, length of binder, hotspot residues)
+- Ensure path to inference.py file is correct
+- Change file permissions to execute shell file 
+  <pre> chmod +x workshop_binder.sh </pre>
+- Run shell script (which runs RFdiffusion)
+<pre> ./workshop_binder.sh </pre>
 
 
 ## Additional Resources
