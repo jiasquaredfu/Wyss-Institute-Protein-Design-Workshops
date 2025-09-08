@@ -92,9 +92,10 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/5532d2e1f3a4738decd58b19d633b3c3/Ac
 wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Base_epoch8_ckpt.pt
 </pre>
 3. Install NVIDIA SE3nv transformer
-*Note, NVIDIA CUDA GPUs which all 3 ML models utilize are not supported for Macs. The following instructions are to adjust RFDiffusion to be compatible with MacOS, which means running solely on CPU, which means all predictions will be 5-10 times slower than with GPU.*
-### On Mac
+*Note, NVIDIA CUDA GPUs which all 3 ML models utilize are not supported for Macs with Apple Silicon chips. The following instructions are to adjust RFDiffusion to be compatible with Macs (running solely on CPU), which means all predictions will be 5-10 times slower than with GPU.*
+### On Mac (Apple Silicon only)
 - Follow the "ARM-Based (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) <br>
+
 - Open the util_module.py file in your RFdiffusion installation
 <pre> vi /Users/jiasquared/Desktop/Wyss/protein_design_software/RFdiffusion/rfdiffusion/util_module.py </pre>
 - Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
