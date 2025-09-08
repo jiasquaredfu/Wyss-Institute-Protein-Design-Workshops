@@ -95,7 +95,12 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 *Note, NVIDIA CUDA GPUs which all 3 ML models utilize are not supported for Macs with Apple Silicon chips. The following instructions are to adjust RFDiffusion to be compatible with Macs (running solely on CPU), which means all predictions will be 5-10 times slower than with GPU.*
 ### On Mac (Apple Silicon only)
 - Follow the "ARM-Based (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) <br>
-
+- Copy and enter the following one at a time 
+<pre>pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1</pre> 
+<pre>pip install numpy==2.1.3 </pre>
+<pre> pip install hydra-core==1.3.2 omegaconf==2.3.0 </pre>
+<pre> pip install dgl==1.1.2 </pre>
+<pre>pip install e3nn==0.5.1 </pre>
 - Open the util_module.py file in your RFdiffusion installation
 <pre> vi /Users/jiasquared/Desktop/Wyss/protein_design_software/RFdiffusion/rfdiffusion/util_module.py </pre>
 - Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
