@@ -4,7 +4,14 @@ Welcome to the Wyss Institute protein design workshops! We are covering the basi
 <b> What to take away from this workshop: </b>
 1. Understanding of cutting-edge machine learning models for protein design
 2. Tools for the modern protein design pipeline downloaded on your computer
-3. A *de novo* mini-binder protein you designed! 
+3. A *de novo* mini-binder protein you designed!
+
+<b> The workshop will be split up into two sessions: </b>
+
+Day 1, September 11th (1-2pm): downloading all the necessary packages for this courageous quest
+Day 2, September 12th (1-2:30pm): designing our own mini binders and working through any installation problems
+
+*** For day 2 of the workshop, please come with a specific target in mind so we can help you make your very own binder!
 
 # Before the Workshop 
 ## Hardware requirements 
