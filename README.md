@@ -50,28 +50,43 @@ Check out these primer slides on the theory and pipeline structure for designing
 A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold, PyMol).
 
 ## On Mac
-1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
-- Follow download instructions for Mac (desktop app not necessary but helpful for beginners)
-- Confirm git has been properly installed by typing <pre> git --version </pre> and enter (should be 2.51.0)
+1. Install homebrew
+- Navigate to directory where you want to work
+- Type  <pre> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </pre> and enter
+- Confirm homebrew has been properly installed by typing <pre> brew --version </pre> and enter (should be Homebrew 4.6.10)
+- If not this version, type
+<pre> brew update </pre> and check version again 
 2. Install [anaconda distributor](https://www.anaconda.com/download)
 - Follow the conda instructions for Mac
 - Open Terminal 
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter (should be 25.7.0)
-3. Install homebrew
-- Navigate to directory where you want to work
-- Type  <pre> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </pre> and enter
-- Confirm homebrew has been properly installed by typing <pre> brew --version </pre> and enter
+- If not this version, type
+<pre> conda update --all </pre> and check version again 
+3. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
+- Follow download instructions for Mac (desktop app not necessary but helpful for beginners)
+- Confirm git has been properly installed by typing <pre> git --version </pre> and enter (should be 2.51.0)
+- If not this version, type
+<pre>brew upgrade git</pre> and check version again 
 4. Install wget
 - Type <pre> brew install wget </pre> and enter (should be 4.6.3)
+- If not this version, type
+<pre> brew upgrade wget </pre> and check version again 
 5. Install curl
 - Type <pre> brew install curl </pre> and enter (should be 8.15.0)
+- - If not this version, type
+<pre> brew upgrade curl </pre> and check version again 
 6. Install cmake
 <pre> brew install cmake </pre> and enter (should be 4.1.1)
+- If not this version, type
+<pre> brew upgrade cmake </pre> and check version again 
 
 ## On Windows
 1. Install [Git](https://docs.github.com/en/get-started/git-basics/set-up-git)
 - Follow download instructions for Windows (desktop app not necessary)
 - Confirm git has been properly installed by typing <pre> git --version </pre> and enter
+- If not this version, type
+- <pre>git update-git-for-windows</pre> and check version again 
+
 2. Install [anaconda distributor](https://www.anaconda.com/download)
 - Follow the conda instructions for Windows
 - Open cmd or powershell
