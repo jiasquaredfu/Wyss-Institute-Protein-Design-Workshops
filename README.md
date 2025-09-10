@@ -20,10 +20,10 @@ These following items are required for running software for this workshop!
 2. 10-20GB of available storage
 3. Terminal authorization 
 
-## Linux Command Line Cheat Sheet
-Linux is used to navigate and download the necessary software through terminal on both Mac and Windows for this workshop. Basic familiarity with these key commands will be very helpful for this workshop and for computational work in general (we will use them throughout the workshop, no need to memorize them!):
+## Command Line Cheat Sheet
+Linux is used to navigate and download the necessary software through terminal on both Mac and Windows for this workshop. Conda is also a python environment hosting system which we will be using to load dependencies for our various models. Basic familiarity with these key commands will be very helpful for this workshop and for computational work in general (we will use them throughout the workshop, no need to memorize them!):
 
-| Linux/VIM Command        | Function                                                |
+| Linux/VIM/Conda Command  | Function                                                |
 |--------------------------|---------------------------------------------------------|
 | `ls`                     | show contents of current directory                      |
 | `cd <folder_name>`       | move into folder                                        |
@@ -36,10 +36,23 @@ Linux is used to navigate and download the necessary software through terminal o
 | `vi <file_name>`         | open VIM editor (press "i" key to enter editing mode)  |
 | `:wq`                    | save and quit file                                      |
 | `:q`                     | quit file without saving                                |
+| `conda info`             | check conda status and version                          |
+| `conda install PACKAGENAME`     | add package to conda                             | 
+| `conda activate ENVNAME`     | activate conda environment                            | 
+| `conda deactivate`     | deactivate current conda environment                            | 
+| `conda env list`          | show conda environments                            | 
+| `conda list`          | show packages on current conda environment                       |
+| `conda rename -n OLD_ENV_NAME NEW_ENV_NAME`          | rename conda environment                       |
+| `conda env remove --name ENVNAME`          | delete conda environment                       |
+
+
+
+
  
 
 <b>Helpful Resources:</b><br>
-- [Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive cheat sheet for reference <br>
+- [Here](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/) is a comprehensive Linux cheat sheet for reference <br>
+- [Here](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) is a comprehensive Conda cheat sheet for reference <br>
 - [Here](https://gitlab.com/slackermedia/bashcrawl) is a game that helps you build up your Linux muscle memory! <br>
 
 
@@ -68,7 +81,7 @@ A few packages need to be installed before we can download and run the 3 machine
 - If not this version, type
 <pre>brew upgrade git</pre> and check version again 
 4. Install wget
-- Type <pre> brew install wget </pre> and enter (should be 4.6.3)
+- Type <pre> brew install wget </pre> and enter (should be 1.25.0)
 - If not this version, type
 <pre> brew upgrade wget </pre> and check version again 
 5. Install curl
@@ -94,9 +107,10 @@ A few packages need to be installed before we can download and run the 3 machine
 
 # 2. Install Machine Learning Models 
 *all GitHub repos for the machine learning models are linked in the section header for detailed instructions if needed*
-Make a new folder where you want to keep software
-- this can be done manually or through the following commands quickly
+- Naviugate to a folder where you want to keep software
+- This can be done manually or through the following commands quickly (change path to yours)
 <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
+- Make a new folder to store everything (the name can be anything)
 <pre> mkdir protein_design_software && cd protein_design_software </pre>
 ## 2a. Install [RFDiffusion](https://github.com/RosettaCommons/RFdiffusion)
 1. Ensure you are in the directory you want <pre> cd protein_design_software </pre> 
@@ -117,6 +131,10 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 3. Install NVIDIA SE3nv transformer
 *Note, NVIDIA CUDA GPUs which all 3 ML models utilize are not supported for Macs with Apple Silicon chips. The following instructions are to adjust RFDiffusion to be compatible with Macs (running solely on CPU), which means all predictions will be 5-10 times slower than with GPU.*
 ### On Mac
+- Make sure you are in the RFdiffusion directory (exit the models folder)
+  <pre> cd .. </pre>
+- Right after the "create conda env" step, you can rename it to rfdiff or something like that to make it clearer as we will make a few more environments
+ <pre> conda rename -n OLD_ENV_NAME NEW_ENV_NAME </pre>
 - Follow the "All System Architecture except ARM (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) if you have an Intel chip Mac <br>
 - Follow the "ARM-Based (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) if you have an M1-4 chip Mac <br>
 - Copy and enter the following one at a time 
