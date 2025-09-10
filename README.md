@@ -206,7 +206,7 @@ This is a software for visualizing and analyzing the protein you designed. <br>
 3. Disregard warning that license not found and will expire in 30 days... its ok
 
  ### Congratulations!
-You now have your very own local protein design pipeline installed and ready to rumble. Please think about a mini-binder (<65 aa long) target (preferably also <= 65aa for Mac people so you don't have to wait for 1 hr to generate an output!) you would like to design for. See ya tomorrow for the fun stuff :)
+You now have your very own local protein design pipeline installed and ready to rumble. Please think about a mini-binder (<65 aa long) target (preferably also <= 65aa for Mac people so you don't have to wait for 1 hr to generate an output!) you would like to design for. If you do not have one, never fear! We will be going through a small example built into RFDiffusion already. See ya tomorrow for the fun stuff :)
 
 # Workshop Day 2: Designing your own *de novo* protein!
 Check out these slides on best practices and target applications protein design can tackle [here](https://hu-my.sharepoint.com/:p:/g/personal/dawningjiaxi_fu_wyss_harvard_edu/EVwylZ5jwstJlKK3unATEh4BOkJ3t_kOPiGjVQT0rVE__A?e=bCCi2G).
