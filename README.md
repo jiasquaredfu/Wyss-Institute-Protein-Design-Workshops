@@ -158,12 +158,11 @@ except ImportError:
 </pre>
 - Press esc and type <pre> :wq </pre> to save and quit the file
 - install additional dependencies with correct versioning
-<pre> pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1
-</pre>
-<pre>pip install numpy==1.26 hydra-core==1.3.2 omegaconf==2.3.0
-pip install dgl==1.1.2+cpu -f https://data.dgl.ai/wheels/repo.html
-pip install e3nn==0.5.1 se3-transformer==0.1.0
-</pre>
+<pre> pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1</pre>
+<pre>pip install numpy==1.26 hydra-core==1.3.2 omegaconf==2.3.0 </pre>
+<pre>pip install dgl==1.1.2+cpu -f https://data.dgl.ai/wheels/repo.html </pre>
+<pre> pip install e3nn==0.5.1 se3-transformer==0.1.0</pre>
+
 - Verify download
 <pre>python -c "import torch, e3nn, dgl; print(torch.__version__, e3nn.__version__)"</pre> and should show something like this <pre>2.5.1 0.5.1</pre>
 
