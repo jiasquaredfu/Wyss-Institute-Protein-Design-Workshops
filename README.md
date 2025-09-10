@@ -143,7 +143,7 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 <pre> pip install hydra-core==1.3.2 omegaconf==2.3.0 </pre>
 <pre> pip install dgl==1.1.2 </pre>
 <pre>pip install e3nn==0.5.1 </pre>
-- Open the util_module.py file in your RFdiffusion installation
+- Open the util_module.py file in your RFdiffusion installation (make sure the path is for your computer, if you are already in RFdiffusion you can just navigate to the rfdiffusion/util_module.py)
 <pre> vi /Users/jiasquared/Desktop/Wyss/protein_design_software/RFdiffusion/rfdiffusion/util_module.py </pre>
 - Press the "i" key and *INSERT* should appear at the bottom of the screen <br>
 - Copy paste the following into the top of the file before the other imports: <br>
