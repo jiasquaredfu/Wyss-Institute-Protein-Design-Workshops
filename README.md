@@ -78,11 +78,12 @@ A few packages need to be installed before we can download and run the 3 machine
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
 
 # 2. Install Machine Learning Models 
+*all GitHub repos for the machine learning models are linked in the section header for detailed instructions if needed*
 Make a new folder where you want to keep software
 - this can be done manually or through the following commands quickly
 <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
 <pre> mkdir protein_design_software && cd protein_design_software </pre>
-## 2a. Install RFDiffusion
+## 2a. Install (RFDiffusion)[https://github.com/RosettaCommons/RFdiffusion]
 1. Ensure you are in the directory you want <pre> cd protein_design_software </pre> 
 2. Clone RFdiffusion git repo
 <pre> git clone https://github.com/RosettaCommons/RFdiffusion.git </pre>
@@ -147,7 +148,7 @@ pip install e3nn==0.5.1 se3-transformer==0.1.0
 4. *Optional* Rename conda env to rfdiffusion or something you'd like 
 <pre> conda rename -n SE3nv rfdiff </pre>
 
-## 2b. Install ProteinMPNN
+## 2b. Install (ProteinMPNN)[https://github.com/Kuhlman-Lab/proteinmpnn]
 ### On Mac
 1. Create conda environment called pmpnn
 <pre> conda create --name pmpnn </pre>
@@ -168,7 +169,7 @@ pip install e3nn==0.5.1 se3-transformer==0.1.0
 4. Clone ProteinMPNN git repo
 <pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
 
-## 2c. Install Local Colabfold
+## 2c. Install (Local Colabfold)[https://github.com/YoshitakaMo/localcolabfold]
 This is a local, open source version of AlphaFold which does not require downloading 3 Tb of protein databases to your computer!
 ### On Mac
 1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
