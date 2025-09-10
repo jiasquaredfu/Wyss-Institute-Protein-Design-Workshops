@@ -46,7 +46,7 @@ Linux is used to navigate and download the necessary software through terminal o
 # Workshop Day 1 - Downloading Software (how fun!)
 Check out these primer slides on the theory and pipeline structure for designing proteins from scratch [here](https://hu-my.sharepoint.com/:p:/g/personal/dawningjiaxi_fu_wyss_harvard_edu/EVwylZ5jwstJlKK3unATEh4BOkJ3t_kOPiGjVQT0rVE__A?e=bCCi2G).
 
-# Installing Dependencies
+# 1. Installing Dependencies
 A few packages need to be installed before we can download and run the 3 machine learning models which comprise the protein design pipeline (RFDiffusion, ProteinMPNN, Alphafold, PyMol).
 
 ## On Mac
@@ -77,12 +77,12 @@ A few packages need to be installed before we can download and run the 3 machine
 - Open cmd or powershell
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
 
-# Install Machine Learning Models 
+# 2. Install Machine Learning Models 
 Make a new folder where you want to keep software
 - this can be done manually or through the following commands quickly
 <pre> cd /Users/jiasquared/Desktop/Wyss </pre>
 <pre> mkdir protein_design_software && cd protein_design_software </pre>
-## Install RFDiffusion
+## 2a. Install RFDiffusion
 1. Ensure you are in the directory you want <pre> cd protein_design_software </pre> 
 2. Clone RFdiffusion git repo
 <pre> git clone https://github.com/RosettaCommons/RFdiffusion.git </pre>
@@ -100,8 +100,9 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Ba
 </pre>
 3. Install NVIDIA SE3nv transformer
 *Note, NVIDIA CUDA GPUs which all 3 ML models utilize are not supported for Macs with Apple Silicon chips. The following instructions are to adjust RFDiffusion to be compatible with Macs (running solely on CPU), which means all predictions will be 5-10 times slower than with GPU.*
-### On Mac (Apple Silicon only)
-- Follow the "ARM-Based (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) <br>
+### On Mac
+- Follow the "All System Architecture except ARM (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) if you have an Intel chip Mac <br>
+- Follow the "ARM-Based (Apple Silicon) Architectures" Rosetta Beta [documentation](https://sites.google.com/omsf.io/rfdiffusion/getting-started/installation?authuser=0#h.t92xhy8bjdqc) if you have an M1-4 chip Mac <br>
 - Copy and enter the following one at a time 
 <pre>pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1</pre> 
 <pre>pip install numpy==2.1.3 </pre>
@@ -122,7 +123,15 @@ except ImportError:
     gb = None
 </pre>
 - Press esc and type <pre> :wq </pre> to save and quit the file
-
+- install additional dependencies with correct versioning
+<pre> pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1
+</pre>
+<pre>pip install numpy==1.26 hydra-core==1.3.2 omegaconf==2.3.0
+pip install dgl==1.1.2+cpu -f https://data.dgl.ai/wheels/repo.html
+pip install e3nn==0.5.1 se3-transformer==0.1.0
+</pre>
+- Verify download
+<pre>python -c "import torch, e3nn, dgl; print(torch.__version__, e3nn.__version__)"</pre> and should show something like this <pre>2.5.1 0.5.1</pre>
 
 ### On Windows
 - Create SE3nv conda environment
@@ -138,7 +147,7 @@ except ImportError:
 4. *Optional* Rename conda env to rfdiffusion or something you'd like 
 <pre> conda rename -n SE3nv rfdiff </pre>
 
-## Install ProteinMPNN
+## 2b. Install ProteinMPNN
 ### On Mac
 1. Create conda environment called pmpnn
 <pre> conda create --name pmpnn </pre>
@@ -159,22 +168,37 @@ except ImportError:
 4. Clone ProteinMPNN git repo
 <pre> git clone https://github.com/dauparas/ProteinMPNN.git </pre>
 
-## Install Local Colabfold
+## 2c. Install Local Colabfold
 This is a local, open source version of AlphaFold which does not require downloading 3 Tb of protein databases to your computer!
 ### On Mac
 1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
 2. Clone Colabfold git repo
 <pre> git clone https://github.com/YoshitakaMo/localcolabfold.git </pre>
-3. Follow documentation instructions for either Intel or Apple Silicon M chip [here](https://github.com/YoshitakaMo/localcolabfold)
+3. Follow documentation instructions on the README.md file for either Intel or Apple Silicon M chip [here](https://github.com/YoshitakaMo/localcolabfold)
+4. Edit some bash configs to get this to work
+- Determine if you are in bash or zsh
+<pre> echo $0</pre>
+- Change the following commands to bash if you are on bash 
+<pre> vi ~/.zshrc </pre> 
+- Press i and copy the following (with your own path) at the bottom of the document. 
+<pre># >>> localcolabfold setup >>>
+export PATH="/Users/jiasquared/Desktop/Wyss/protein_design_software/localcolabfold/colabfold-conda/bin:$PATH"
+# <<< localcolabfold setup <<< </pre>
+- Press esc and type <pre> :wq </pre> to save and quit the file
+- Reset zsh
+<pre >source ~/.zshrc </pre>
+- Confirm that the colabfold environment is active
+  <pre> which colabfold_batch </pre> which should output 
+<pre> /Users/jiasquared/Desktop/Wyss/protein_design_software/localcolabfold/colabfold-conda/bin/colabfold_batch </pre>
 
 ### On Windows
 1. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
 2. Clone Colabfold git repo
 <pre> git clone https://github.com/YoshitakaMo/localcolabfold.git </pre>
-3. Follow documentation instructions for Linux [here](https://github.com/YoshitakaMo/localcolabfold)
+3. Follow documentation instructions on the README.md file for Linux [here](https://github.com/YoshitakaMo/localcolabfold)
 
 
-## Install PyMol
+## 3. Install PyMol
 This is a software for visualizing and analyzing the protein you designed. <br>
 
 1. Register for a PyMol educational license with your Wyss/MIT email [here](https://pymol.org/edu/)
