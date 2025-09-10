@@ -248,18 +248,24 @@ Check out these slides on best practices and target applications protein design 
 
 Now that we did all the hard work setting up the protein design infrastructure, let's apply it! <br>
 
-# Backbone design
-*If you don't have a binding target, just use the one in the example scripts built into RFdiffusion*
+# 1. Backbone design with RFDiffusion
+*If you don't have a binding target, just use the design_ppi one in the example scripts built into RFdiffusion*
 - Add your target structure .pdb file into a folder called input_pdbs
-- Make a copy of the binder example shell script in examples
+- Make a copy of the binder example shell script in examples 
 <pre> cp ./protein_design_software/RFdiffusion/examples/design_ppi.sh workshop_binder.sh </pre>
-- Edit the contig information to fit your case (residue range, length of binder, hotspot residues)
-- Ensure path to inference.py file is correct
+- Edit the contig information to fit your case (residue range, length of binder, hotspot residues, change the path), for example, here I kept them as short as possible and reduced to 1 output design to run in a reasonable timeframe:
+ <pre>../scripts/run_inference.py inference.output_prefix=example_outputs/design_ppi inference.input_pdb=input_pdbs/insulin_target.pdb 'contigmap.contigs=[A1-150/0 1-10]' 'ppi.hotspot_res=[A59,A83,A91]' inference.num_designs=1 denoiser.noise_scale_ca=0 denoiser.noise_scale_frame=0</pre>
+- Ensure path to inference.py and input file is correct
 - Change file permissions to execute shell file 
   <pre> chmod +x workshop_binder.sh </pre>
 - Run shell script (which runs RFdiffusion)
 <pre> ./workshop_binder.sh </pre>
+- It should show something like this and take 5-10 minutes for a ~10 aa binder to generate
+<img width="2372" height="355" alt="Screenshot 2025-09-10 at 3 28 47 PM" src="https://github.com/user-attachments/assets/f62b7002-89f1-4e01-8e0b-1deedc79c708" />
+- Now you should have a file ending in _0.pdb in the output folder specifed in the .sh script. You can open this design up in PyMol and visualize it! Note that the sequence is all Gs. This is where ProteinMPNN comes in...
+<img width="654" height="452" alt="Screenshot 2025-09-10 at 3 43 21 PM" src="https://github.com/user-attachments/assets/2c514d7c-b9a0-4a43-a286-0dba310dcd6c" />
 
+# 2. Sequence design with ProteinMPNN
 
 ## Additional Resources
 These notebooks are hosted on the Google Colab server which allows you to run protein design software on the cloud instead of locally. 
