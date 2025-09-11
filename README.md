@@ -104,7 +104,7 @@ A few packages need to be installed before we can download and run the 3 machine
 - Follow the conda instructions for Windows
 - Open cmd or powershell
 - Confirm conda has been properly installed by typing <pre> conda --version </pre> and enter
-
+3. Download wget installer x64 [here](https://eternallybored.org/misc/wget/)
 # 2. Install Machine Learning Models 
 *all GitHub repos for the machine learning models are linked in the section header for detailed instructions if needed*
 - Naviugate to a folder where you want to keep software
@@ -167,15 +167,7 @@ except ImportError:
 <pre>python -c "import torch, e3nn, dgl; print(torch.__version__, e3nn.__version__)"</pre> and should show something like this <pre>2.5.1 0.5.1</pre>
 
 ### On Windows
-- Create SE3nv conda environment
-<pre> conda env create -f env/SE3nv.yml </pre>
-- Activate conda environment
-<pre> conda activate SE3nv </pre>
-<pre>cd env/SE3Transformer </pre>
-<pre> pip install --no-cache-dir -r requirements.txt </pre>
-<pre> python setup.py install </pre>
-<pre> cd ../.. # change into the root directory of the repository </pre>
-<pre> pip install -e . # install the rfdiffusion module from the root of the repository </pre>
+- Follow RFDiffusion installation instructions [here](https://github.com/RosettaCommons/RFdiffusion)
 
 4. *Optional* Rename conda env to rfdiffusion or something you'd like 
 <pre> conda rename -n SE3nv rfdiff </pre>
