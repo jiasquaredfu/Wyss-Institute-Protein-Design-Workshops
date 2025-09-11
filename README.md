@@ -184,7 +184,7 @@ except ImportError:
 ### On Mac
 1. Create conda environment called pmpnn
 <pre> conda create --name pmpnn </pre>
-<pre> source activate pmpnn </pre>
+<pre> conda activate pmpnn </pre>
 2. Add CPU only pytorch ML library 
 <pre>conda install pytorch torchvision torchaudio cpuonly -c pytorch </pre>
 3. Ensure you are in the protein_design_software directory <pre> cd protein_design_software </pre>
