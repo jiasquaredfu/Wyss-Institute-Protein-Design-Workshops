@@ -269,7 +269,7 @@ Now that we did all the hard work setting up the protein design infrastructure, 
   <pre> chmod +x run_workshop_pmpnn.sh </pre>
 - Run shell script (which runs PMPNN)
 <pre> ./run_workshop_pmpnn.sh </pre>
-- The .fa output file should populate in the output folder you specified inside a seqs folder
+- The .fa output file should populate in the output folder you specified inside a seqs folder <br>
 <img width="748" height="80" alt="Screenshot 2025-09-11 at 4 22 59 PM" src="https://github.com/user-attachments/assets/55636a1e-bb07-4106-b74a-d441af3e0fec" />
 - The output file will look like this, where the binder is the part before the slash in the bottom half of the file. You'll notice that the sequence for the receptor was also redesigned, which PMPNN will do. We will just supply the original receptor sequence for colabfold. 
 <img width="722" height="334" alt="Screenshot 2025-09-11 at 4 23 40 PM" src="https://github.com/user-attachments/assets/524f585d-9da9-4131-a965-4424257ef215" />
@@ -296,15 +296,19 @@ Now that we did all the hard work setting up the protein design infrastructure, 
 
 
 # 4. Docking and Analysis 
-- The typical method is through various Rosetta Tools like flexpopdock from Gray Lab linked [here](https://rosie.graylab.jhu.edu) to score the interface where the binder and receptor interact
+- The typical method is through various Rosetta Tools like flexpopdock from Gray Lab linked [here](https://rosie.graylab.jhu.edu) to score the interface where the binder and receptor interact 
 - [Rifdock](https://github.com/rifdock/rifdock) and [Diffdock](https://github.com/gcorso/DiffDock) are also standard tools
-- An easy alternative to input our sequences directly into AlphaFold3 through the server, specifying the binder and receptor as separate inputs. AF3 will output the structures already docked together. 
+- An easy alternative to input our sequences directly into AlphaFold3 through the server, specifying the binder and receptor as separate inputs. AF3 will output the structures already docked together. <br>
 
-<img width="729" height="538" alt="Screenshot 2025-09-11 at 4 59 52 PM" src="https://github.com/user-attachments/assets/0325ee6e-d7d2-481a-9ba7-c8823ab6450e" />
+<img width="729" height="538" alt="Screenshot 2025-09-11 at 4 59 52 PM" src="https://github.com/user-attachments/assets/0325ee6e-d7d2-481a-9ba7-c8823ab6450e" /> 
+
 - There are scripts through PyMol like [InterfaceResidue](https://pymolwiki.org/index.php/InterfaceResidues) which are helpful to visualize the interface
-- load it by downloading and doing <pre> run interface_residues.py </pre>
+- Load it by downloading and doing <pre> run interface_residues.py </pre>
 - Run by doing this 
-<pre> interfaceResidues output </pre> and coloring the interface to visualize it better 
+<pre> interfaceResidues output </pre> 
+
+and coloring the interface to visualize it better  <br>
+
 <img width="657" height="480" alt="image" src="https://github.com/user-attachments/assets/f20e895b-52b6-4657-aacc-b5eae3266ad1" />
 
 
