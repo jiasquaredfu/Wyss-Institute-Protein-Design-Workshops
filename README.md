@@ -258,12 +258,62 @@ Now that we did all the hard work setting up the protein design infrastructure, 
 <img width="654" height="452" alt="Screenshot 2025-09-10 at 3 43 21 PM" src="https://github.com/user-attachments/assets/2c514d7c-b9a0-4a43-a286-0dba310dcd6c" />
 
 # 2. Sequence design with ProteinMPNN
+- Create a new folder within the inputs folder and copy your output .pdb file from RFDiffusion here
+- Make a copy of ProteinMPNN/examples/submit_example_1.sh
+- Open and edit the file to your desired input and output paths:
+<pre> folder_with_pdbs="./inputs/workshop_binder" </pre>
+<pre> output_dir="./outputs/workshop_binder_output" </pre>
+- Change the number of sequences to 1
+<pre> --num_seq_per_target 1 \  </pre>
+- Change file permissions to execute shell file 
+  <pre> chmod +x run_workshop_pmpnn.sh </pre>
+- Run shell script (which runs PMPNN)
+<pre> ./run_workshop_pmpnn.sh </pre>
+- The .fa output file should populate in the output folder you specified inside a seqs folder
+<img width="748" height="80" alt="Screenshot 2025-09-11 at 4 22 59 PM" src="https://github.com/user-attachments/assets/55636a1e-bb07-4106-b74a-d441af3e0fec" />
+- The output file will look like this, where the binder is the part before the slash in the bottom half of the file. You'll notice that the sequence for the receptor was also redesigned, which PMPNN will do. We will just supply the original receptor sequence for colabfold. 
+<img width="722" height="334" alt="Screenshot 2025-09-11 at 4 23 40 PM" src="https://github.com/user-attachments/assets/524f585d-9da9-4131-a965-4424257ef215" />
+
+# 3. Structure validation with Colabfold
+- Create a new .fa file named workshop_binder.fa in the localcolabfold folder which looks like this
+  <pre> >binder
+   MTDEEVRKLLKEVAA (insert your binder seq here) </pre>
+- Create a new .fa file named workshop_receptor.fa in the localcolabfold folder which looks like this
+  <pre> >receptor
+  MVCPGMDITGDLSELEKLKDCTVIDGYLSIHDMPNTTEADWKNLSLSKLKEITDFLAFYNVNGLTSLSNLFPNLTVIKGEKLLNGYALVIHSMTGLKSLGLNKLSKIENGYVRISNNPTLCGLKSIDWSKISPDTSGNDISNNAEDTNTC (insert your receptor seq here)</pre>
+
+- Run colabfold on the binder
+  <pre> colabfold_batch workshop_binder.fa outputdir/ </pre>
+- It will run for a while and try to run through 5 models. You can stop the output after model 1 by doing control C
+<img width="1196" height="805" alt="image" src="https://github.com/user-attachments/assets/2050b152-bdad-492f-a818-8f55d2e17fb3" />
+ 
+- Run colabfold on the receptor 
+  <pre> colabfold_batch workshop_receptor.fa outputdir/ </pre>
+- It will run for a while and run through 5 models. You can stop the output after model 1 by doing control C
+- The outputs will look something like this
+  <pre> _binder_unrelaxed_alphafold2_ptm_model_1_seed_000.pdb </pre>
+- Open the binder and receptor up in PyMol
+
+
+# 4. Docking and Analysis 
+- The typical method is through various Rosetta Tools like flexpopdock from Gray Lab linked [here](https://rosie.graylab.jhu.edu) to score the interface where the binder and receptor interact
+- [Rifdock](https://github.com/rifdock/rifdock) and [Diffdock](https://github.com/gcorso/DiffDock) are also standard tools
+- An easy alternative to input our sequences directly into AlphaFold3 through the server, specifying the binder and receptor as separate inputs. AF3 will output the structures already docked together. 
+
+<img width="729" height="538" alt="Screenshot 2025-09-11 at 4 59 52 PM" src="https://github.com/user-attachments/assets/0325ee6e-d7d2-481a-9ba7-c8823ab6450e" />
+- There are scripts through PyMol like [InterfaceResidue](https://pymolwiki.org/index.php/InterfaceResidues) which are helpful to visualize the interface
+- load it by downloading and doing <pre> run interface_residues.py </pre>
+- Run by doing this 
+<pre> interfaceResidues output </pre> and coloring the interface to visualize it better 
+<img width="657" height="480" alt="image" src="https://github.com/user-attachments/assets/f20e895b-52b6-4657-aacc-b5eae3266ad1" />
+
 
 ## Additional Resources
 These notebooks are hosted on the Google Colab server which allows you to run protein design software on the cloud instead of locally. 
-- [Interactive Notebook](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
+- [Interactive Full Pipeline Notebook](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
 - [RFDiffusion](https://colab.research.google.com/github/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb)
 - [Alphafold2](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb)
 - [Alphafold3](https://alphafoldserver.com)
 - [Colabfold](https://github.com/sokrypton/ColabFold)
+- [Bindcraft] is a cutting edge tool for binder design (https://github.com/martinpacesa/BindCraft/blob/main/notebooks/BindCraft.ipynb)
 
